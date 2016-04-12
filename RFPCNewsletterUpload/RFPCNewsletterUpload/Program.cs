@@ -15,9 +15,11 @@ namespace RFPCNewsletterUpload
 
         static void Main(string[] args)
         {
-            String str = @"server=184.168.154.14;database=rei1330509541036;userid=rei1330509541036;password=Adminrfpc01!;";
+            //connection string credentials
+            String str = @"server=IPAddress;database=DBName;userid=DBUserName;password=DBPassword;";
             MySqlConnection con = null;
 
+            //look in this folder for pdf documents
             string[] pdfFiles = GetFileNames("C:\\Users\\Joe\\Desktop\\RFPCNewsletters", "*.pdf");
             foreach(var newsletterPdf in pdfFiles)
             {
@@ -25,53 +27,22 @@ namespace RFPCNewsletterUpload
                 var post_title = newsletterPdf.ToString();
                 var post_name = newsletterPdf.ToString();
 
+                //upload the pdf
                 UploadFile("ftp://reinbeckfirstpres.com/", newsletterPdf, "n79c4827", "Adminrfpc01!", "wp-content/uploads/Console/");
 
-                // Get the object used to communicate with the server.
-                //FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://reinbeckfirstpres.com/wp-content/uploads/Console/" + newsletterPdf);
-                //request.Method = WebRequestMethods.Ftp.UploadFile;
-
-                //// This example assumes the FTP site uses anonymous logon.
-                //request.Credentials = new NetworkCredential("n79c4827", "Adminrfpc01!");
-
-                //// Copy the contents of the file to the request stream.
-                //StreamReader sourceStream = new StreamReader(newsletterPdf);
-                //byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
-                //sourceStream.Close();
-                //request.ContentLength = fileContents.Length;
-
-                //Stream requestStream = request.GetRequestStream();
-                //requestStream.Write(fileContents, 0, fileContents.Length);
-                //requestStream.Close();
-
-                //FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-
-                ////Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
-                //String uriString = request.ToString();
-
-                //// Create a new WebClient instance.
-                //WebClient myWebClient = new WebClient();
-                //myWebClient.Credentials = new NetworkCredential("n79c4827", "Adminrfpc01");
-                ////Console.WriteLine("\nPlease enter the fully qualified path of the file to be uploaded to the URI");
-                //string fileName = uriString;
-                //Console.WriteLine("Uploading {0} to {1} ...", fileName, uriString);
-
-                //// Upload the file to the URI.
-                //// The 'UploadFile(uriString,fileName)' method implicitly uses HTTP POST method.
-                //byte[] responseArray = myWebClient.UploadFile(uriString, fileName);
-
-                //response.Close();
-
-
+                //create record after successfull PDF upload
                 try
                 {
+                    //create and open connection
                     con = new MySqlConnection(str);
                     con.Open();
 
+                    //sql to insert
                     String cmdText = "INSERT INTO wp_posts(post_author, post_date, post_date_gmt, post_title, post_status, comment_status, ping_status, post_name, post_modified, post_modified_gmt, guid, menu_order, post_type, post_mime_type, comment_count) VALUES(@post_author, @post_date, @post_date_gmt, @post_title, @post_status, @comment_status, @ping_status, @post_name, @post_modified, @post_modified_gmt, @guid, @menu_order, @post_type, @post_mime_type, @comment_count)";
+
+                    //bind values to sql variables/placeholders
                     MySqlCommand cmd = new MySqlCommand(cmdText, con);
                     cmd.Prepare();
-                    //we will bound a value to the placeholder
                     cmd.Parameters.AddWithValue("@post_author", 1);
                     cmd.Parameters.AddWithValue("@post_date", DateTime.Now);
                     cmd.Parameters.AddWithValue("@post_date_gmt", DateTime.Now);
