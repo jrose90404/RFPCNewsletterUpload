@@ -112,25 +112,24 @@ namespace RFPCNewsletterUpload
             return files;
         }
 
-        public static string UploadFile(string FtpUrl, string fileName, string userName, string password,string
-    UploadDirectory="")
-    {
-        string PureFileName = new FileInfo(fileName).Name;
-        String uploadUrl = String.Format("{0}{1}/{2}", FtpUrl,UploadDirectory,PureFileName);
-        FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(uploadUrl);
-        req.Proxy = null;
-        req.Method = WebRequestMethods.Ftp.UploadFile;
-        req.Credentials = new NetworkCredential(userName,password);
-        req.UseBinary = true;
-        req.UsePassive = true;
-        byte[] data = File.ReadAllBytes(fileName);
-        req.ContentLength = data.Length;
-        Stream stream = req.GetRequestStream();
-        stream.Write(data, 0, data.Length);
-        stream.Close();
-        FtpWebResponse res = (FtpWebResponse)req.GetResponse();
-        return res.StatusDescription;
-    }
+        public static string UploadFile(string FtpUrl, string fileName, string userName, string password,string UploadDirectory="")
+        {
+            string PureFileName = new FileInfo(fileName).Name;
+            String uploadUrl = String.Format("{0}{1}/{2}", FtpUrl,UploadDirectory,PureFileName);
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(uploadUrl);
+            req.Proxy = null;
+            req.Method = WebRequestMethods.Ftp.UploadFile;
+            req.Credentials = new NetworkCredential(userName,password);
+            req.UseBinary = true;
+            req.UsePassive = true;
+            byte[] data = File.ReadAllBytes(fileName);
+            req.ContentLength = data.Length;
+            Stream stream = req.GetRequestStream();
+            stream.Write(data, 0, data.Length);
+            stream.Close();
+            FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+            return res.StatusDescription;
+        }
 
     }
 }
