@@ -10,3 +10,9 @@ C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\itextsh
 C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\RFPCNewsletterUpload.exe.config
 C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\obj\x86\Debug\RFPCNewsletterUpload.exe
 C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\obj\x86\Debug\RFPCNewsletterUpload.pdb
+C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\RFPCNewsletterUpload.exe
+C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\RFPCNewsletterUpload.pdb
+C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\itextsharp.dll
+C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\MySql.Data.dll
+C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\itextsharp.xml
+C:\Users\Joe\Documents\GitHub\RFPCNewsletterUpload\RFPCNewsletterUpload\RFPCNewsletterUpload\obj\x86\Debug\RFPCNewsletterUpload.csprojResolveAssemblyReference.cache

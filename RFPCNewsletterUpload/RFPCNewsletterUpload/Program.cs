@@ -68,7 +68,7 @@ namespace RFPCNewsletterUpload
                     con = new MySqlConnection(str);
                     con.Open();
 
-                    String cmdText = "INSERT INTO wp_posts(post_author, post_date, post_title, post_status, comment_status, ping_status, post_name, post_modified, post_modified_gmt, guid, menu_order, post_type, post_mime_type, comment_count) VALUES(@post_author, @post_date, @post_title, @post_status, @comment_status, @ping_status, @post_name, @post_modified, @post_modified_gmt, @guid, @menu_order, @post_type, @post_mime_type, @comment_count)";
+                    String cmdText = "INSERT INTO wp_posts(post_author, post_date, post_date_gmt, post_title, post_status, comment_status, ping_status, post_name, post_modified, post_modified_gmt, guid, menu_order, post_type, post_mime_type, comment_count) VALUES(@post_author, @post_date, @post_date_gmt, @post_title, @post_status, @comment_status, @ping_status, @post_name, @post_modified, @post_modified_gmt, @guid, @menu_order, @post_type, @post_mime_type, @comment_count)";
                     MySqlCommand cmd = new MySqlCommand(cmdText, con);
                     cmd.Prepare();
                     //we will bound a value to the placeholder
@@ -115,7 +115,7 @@ namespace RFPCNewsletterUpload
         public static string UploadFile(string FtpUrl, string fileName, string userName, string password,string UploadDirectory="")
         {
             string PureFileName = new FileInfo(fileName).Name;
-            String uploadUrl = String.Format("{0}{1}/{2}", FtpUrl,UploadDirectory,PureFileName);
+            String uploadUrl = String.Format("{0}{1}{2}", FtpUrl,UploadDirectory,PureFileName);
             FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(uploadUrl);
             req.Proxy = null;
             req.Method = WebRequestMethods.Ftp.UploadFile;
