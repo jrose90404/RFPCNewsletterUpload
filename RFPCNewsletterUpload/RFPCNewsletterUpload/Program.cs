@@ -16,7 +16,8 @@ namespace RFPCNewsletterUpload
         static void Main(string[] args)
         {
             //connection string credentials
-            String str = @"server=IPAddress;database=DBName;userid=DBUserName;password=DBPassword;";
+            var str = @"server=IPAddress;database=DBName;userid=DBUserName;password=DBPassword;";
+            
             MySqlConnection con = null;
 
             //look in this folder for pdf documents
@@ -38,10 +39,10 @@ namespace RFPCNewsletterUpload
                     con.Open();
 
                     //sql to insert
-                    String cmdText = "INSERT INTO wp_posts(post_author, post_date, post_date_gmt, post_title, post_status, comment_status, ping_status, post_name, post_modified, post_modified_gmt, guid, menu_order, post_type, post_mime_type, comment_count) VALUES(@post_author, @post_date, @post_date_gmt, @post_title, @post_status, @comment_status, @ping_status, @post_name, @post_modified, @post_modified_gmt, @guid, @menu_order, @post_type, @post_mime_type, @comment_count)";
+                    var cmdText = "INSERT INTO wp_posts(post_author, post_date, post_date_gmt, post_title, post_status, comment_status, ping_status, post_name, post_modified, post_modified_gmt, guid, menu_order, post_type, post_mime_type, comment_count) VALUES(@post_author, @post_date, @post_date_gmt, @post_title, @post_status, @comment_status, @ping_status, @post_name, @post_modified, @post_modified_gmt, @guid, @menu_order, @post_type, @post_mime_type, @comment_count)";
 
                     //bind values to sql variables/placeholders
-                    MySqlCommand cmd = new MySqlCommand(cmdText, con);
+                    var cmd = new MySqlCommand(cmdText, con);
                     cmd.Prepare();
                     cmd.Parameters.AddWithValue("@post_author", 1);
                     cmd.Parameters.AddWithValue("@post_date", DateTime.Now);
@@ -83,11 +84,11 @@ namespace RFPCNewsletterUpload
             return files;
         }
 
-        public static string UploadFile(string FtpUrl, string fileName, string userName, string password,string UploadDirectory="")
+        public static string UploadFile(string FtpUrl, string fileName, string userName, string password, string UploadDirectory = "")
         {
-            string PureFileName = new FileInfo(fileName).Name;
-            String uploadUrl = String.Format("{0}{1}{2}", FtpUrl,UploadDirectory,PureFileName);
-            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(uploadUrl);
+            var PureFileName = new FileInfo(fileName).Name;
+            var uploadUrl = String.Format("{0}{1}{2}", FtpUrl,UploadDirectory,PureFileName);
+            var req = (FtpWebRequest)FtpWebRequest.Create(uploadUrl);
             req.Proxy = null;
             req.Method = WebRequestMethods.Ftp.UploadFile;
             req.Credentials = new NetworkCredential(userName,password);
@@ -95,10 +96,10 @@ namespace RFPCNewsletterUpload
             req.UsePassive = true;
             byte[] data = File.ReadAllBytes(fileName);
             req.ContentLength = data.Length;
-            Stream stream = req.GetRequestStream();
+            var stream = req.GetRequestStream();
             stream.Write(data, 0, data.Length);
             stream.Close();
-            FtpWebResponse res = (FtpWebResponse)req.GetResponse();
+            var res = (FtpWebResponse)req.GetResponse();
             return res.StatusDescription;
         }
 
