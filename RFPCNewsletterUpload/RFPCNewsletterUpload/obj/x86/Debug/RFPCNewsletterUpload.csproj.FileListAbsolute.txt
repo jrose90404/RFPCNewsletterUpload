@@ -1,0 +1,9 @@
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\RFPCNewsletterUpload.exe.config
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\RFPCNewsletterUpload.exe
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\RFPCNewsletterUpload.pdb
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\MySql.Data.dll
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\obj\x86\Debug\RFPCNewsletterUpload.exe
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\obj\x86\Debug\RFPCNewsletterUpload.pdb
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\itextsharp.dll
+C:\Users\Joe\Desktop\RFPCNewsletterUpload\RFPCNewsletterUpload\bin\Debug\itextsharp.xml
